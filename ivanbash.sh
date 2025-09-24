@@ -1,5 +1,7 @@
 #!/bin/bash
 menu() {
+op=1
+while [ $op -ne 0 ]; do
         echo "1. bisiesto"
         echo "2. configurarred"
         echo "3. adivina"
@@ -9,8 +11,6 @@ menu() {
         echo "7. romano"
         echo "0. salir"
 read -p "Escoge una opcion " op
-}
-menu
 case $op in
         0)
         echo "HAS SALIDO DEL SCRIPT"
@@ -96,3 +96,6 @@ net
 	read -p ""
 	;;
 esac
+done
+}
+menu
