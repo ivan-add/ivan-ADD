@@ -8,7 +8,7 @@ menu() {
         echo "6. permisosoctal"
         echo "7. romano"
         echo "0. salir"
-read -p "Escoge una opción " op
+read -p "Escoge una opcion " op
 }
 menu
 case $op in
@@ -16,9 +16,9 @@ case $op in
         echo "HAS SALIDO DEL SCRIPT"
         ;;
         1)
-        read -p "Escribe un año " anio
+        read -p "Escribe un anio " anio
         let anio--
-        if [ $((anio % 4)) == 0 ]; then
+        if [[ $((anio % 400)) -eq 0 || $((anio % 4)) -eq 0 && $((anio % 100)) -ne 0 ]]; then
            echo "El año pasado si era bisiesto  $anio "
         else
            echo "El año pasado no era bisiento  $anio "
@@ -85,13 +85,14 @@ net
 	;;
 	5)
 	read -p "Contar cuantos ficheros hay en un directorio " d
-	if [ -d "$d" ]; then
+	if [ -d $d ]; then
 	   contar=$(find $d -type f | wc -l 2>/dev/null)
 	   echo "Hay un total de $contar ficheros en el directorio $d"
 	else
-	   echo "El directorio $d no exite"
+	   echo "No existe el directorio $d"
 	fi
 	;;
 	6)
-	read -p
+	read -p ""
+	;;
 esac
